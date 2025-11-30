@@ -1,6 +1,7 @@
 package de.seuhd.campuscoffee.tests.system;
 
 import de.seuhd.campuscoffee.api.mapper.PosDtoMapper;
+import de.seuhd.campuscoffee.api.mapper.UserDtoMapper;
 import de.seuhd.campuscoffee.domain.ports.PosService;
 import de.seuhd.campuscoffee.domain.ports.UserService;
 import io.restassured.RestAssured;
@@ -47,9 +48,9 @@ public abstract class AbstractSysTest {
     @Autowired
     protected PosDtoMapper posDtoMapper;
 
-    //TODO: Uncomment after user DTO mapper is implemented
-    //@Autowired
-    //protected UserDtoMapper userDtoMapper;
+    //completed: Uncomment after user DTO mapper is implemented
+    @Autowired
+    protected UserDtoMapper userDtoMapper;
 
     @LocalServerPort
     private Integer port;
