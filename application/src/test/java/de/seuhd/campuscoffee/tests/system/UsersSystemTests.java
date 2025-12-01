@@ -5,8 +5,6 @@ import de.seuhd.campuscoffee.domain.tests.TestFixtures;
 import org.junit.jupiter.api.Test;
 import java.util.List;
 
-//import org.springframework.http.HttpStatus;
-
 import static de.seuhd.campuscoffee.tests.SystemTestUtils.Requests.userRequests;
 //import static org.assertj.core.api.Assertions.assertThat;
 
@@ -22,6 +20,29 @@ public class UsersSystemTests extends AbstractSysTest {
        assertEqualsIgnoringIdAndTimestamps(createdUser, userToCreate);
    }
 
-    //TODO: Add at least two additional tests for user operations
+    //completed: Add at least two additional tests for user operations
+    @Test
+    void getAllCreatedUsers() {
+        List<User> createdUserList = TestFixtures.createUsers(userService);
+
+        List<User> retrievedUsers = userRequests.retrieveAll()
+                .stream()
+                .map(userDtoMapper::toDomain)
+                .toList();
+
+        assertEqualsIgnoringTimestamps(retrievedUsers, createdUserList);
+    }
+
+    @Test
+    void userPosById() {
+        List<User> createdUserList = TestFixtures.createUsers(userService);
+        User createdUser = createdUserList.getFirst();
+
+        User retrievedUser = userDtoMapper.toDomain(
+                userRequests.retrieveById(createdUser.id())
+        );
+
+        assertEqualsIgnoringTimestamps(retrievedUser, createdUser);
+    }
 
 }
