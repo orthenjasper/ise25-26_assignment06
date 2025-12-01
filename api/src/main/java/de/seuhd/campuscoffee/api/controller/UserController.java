@@ -1,6 +1,5 @@
 package de.seuhd.campuscoffee.api.controller;
 
-import de.seuhd.campuscoffee.api.dtos.PosDto;
 import de.seuhd.campuscoffee.api.dtos.UserDto;
 import de.seuhd.campuscoffee.api.exceptions.ErrorResponse;
 import de.seuhd.campuscoffee.api.mapper.UserDtoMapper;
